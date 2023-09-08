@@ -1,6 +1,7 @@
 ---
-import { Icon } from "astro-icon";
 import PlaylistOption from "../components/PlaylistOption.astro";
+import AsideApp from "../components/AsideApp.astro";
+import { ViewTransitions } from "astro:transitions";
 interface Props {
 	title: string;
 }
@@ -17,83 +18,58 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
-		<main class="flex gap-2 p-2 w-full max-h-screen">
-			<section class="w-1/4 max-w-[25%]">
-				<aside class="flex flex-col gap-2">
-					<section class="bg-[#121212] h-full rounded p-4 flex flex-col gap-2">
-						<div class="gap-3 opacity-75 text-md flex items-center">
-							<Icon name="octicon:home-24" width="30" />
-							<h3>Inicio</h3>
-						</div>
-						<div class="gap-3 opacity-75 text-md flex items-center">
-							<Icon name="iconoir:search" width="30" />
-							<h3>Buscar</h3>
-						</div>
-					</section>
-					<section class="p-4 rounded h-full max-h-full bg-[#121212]">
-						<header class="shadow-xl">
-							<div class="flex items-center opacity-75 justify-between">
-								<div class="flex gap-2 items-center">
-									<Icon name="icomoon-free:books" width="30" />
-									<h3>Tu biblioteca</h3>
-								</div>
-								<div class="flex gap-3">
-									<Icon name="ic:baseline-plus" width="30" />
-									<Icon name="ep:right" width="30" />
-								</div>
-							</div>
-							<div class="flex mt-5 text-[0.8rem] gap-2">
-								<h3 class="p-2 bg-[#232323] rounded-full">Playlist</h3>
-								<h3 class="p-2 bg-[#232323] rounded-full">Artistas</h3>
-							</div>
-						</header>
-						<div class="mt-5 flex overflow-auto max-h-full h-full flex-col gap-3">
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-							<PlaylistOption />
-						</div>
-					</section>
-				</aside>
-			</section>
-			<slot />
+		<main class="flex gap-2 p-2 w-full h-screen max-h-screen">
+			<AsideApp />
+			<slot transition:animate="slide"/>
 		</main>
 	</body>
-	<style is:global>
-		@font-face {
-			font-family: "Monserrat spo";
-			src: url("../fonts/static/Montserrat-medium.ttf"),
-				url("../fonts/static/Montserrat-Regular.ttf"),
-				url("../fonts/static/Montserrat-Medium.ttf");
-		}
-
-		* {
-			padding: 0;
-			margin: 0;
-		}
-
-		body {
-			font-family: "Monserrat spo", sans-serif;
-			background-color: black;
-			color: white;
-		}
-	</style>
 </html>
+
+<style is:global>
+	@font-face {
+		font-family: "Monserrat spo";
+		src: url("../fonts/static/Montserrat-medium.ttf"),
+			url("../fonts/static/Montserrat-Regular.ttf"),
+			url("../fonts/static/Montserrat-Medium.ttf");
+	}
+
+	* {
+		padding: 0;
+		margin: 0;
+	}
+
+	body {
+		font-family: "Monserrat spo", sans-serif;
+		background-color: black;
+		color: white;
+	}
+
+	*::-webkit-scrollbar {
+		-webkit-appearance: none;		
+	}
+
+	*::-webkit-scrollbar:vertical {
+		width: 8px;
+	}
+
+	*::-webkit-scrollbar-button:increment,
+	*::-webkit-scrollbar-button {
+		display: none;
+	}
+
+	*::-webkit-scrollbar:horizontal {		
+		height: 8px;
+	}
+
+	*::-webkit-scrollbar-thumb {
+		background-color: #797979;
+		border-radius: 10px;
+	}
+
+	*::-webkit-scrollbar-track {
+		border-radius: 10px;
+	}
+</style>

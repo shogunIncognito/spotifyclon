@@ -1,10 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PlaylistCard from "../components/PlaylistCard.astro";
+import PlaylistContainer from "../components/PlaylistContainer.astro";
+import NavigationButtons from "../components/NavigationButtons.astro";
 ---
 
 <Layout title="Spotify">
-	<section class="flex justify-center rounded bg-[#1F1F1F] w-full items-center">
-		<h2>Listas de reproduccion etc...</h2>
+	<section class="rounded overflow-auto max-w-[75%] p-6 bg-[#1F1F1F] w-full">
+		<NavigationButtons back={false} next={false}/>
+		<h2 class="text-2xl font-bold">Escuchado recientemente</h2>
+		<PlaylistContainer>
+			<PlaylistCard />
+			<PlaylistCard />
+			<PlaylistCard />
+			<PlaylistCard />
+			<PlaylistCard />
+			<PlaylistCard />
+		</PlaylistContainer>
+
+		<section>
+			<h2 class="text-2xl font-bold">Hecho para ti</h2>
+			<PlaylistContainer>
+				<PlaylistCard />
+				<PlaylistCard />
+				<PlaylistCard />
+				<PlaylistCard />
+			</PlaylistContainer>
+		</section>		
 	</section>
 </Layout>
-

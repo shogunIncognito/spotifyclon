@@ -1,0 +1,30 @@
+---
+import Icon from "astro-icon";
+
+const { back = false, next = false } = Astro.props;
+---
+
+<header class="flex gap-2 mb-10">
+  <a
+    href={back || '#'}
+    class:list={[
+      "bg-black p-2 rounded-full",
+      {
+        "bg-black/40 cursor-not-allowed pointer-events-none": !back,
+      },
+    ]}
+  >
+    <Icon name="teenyicons:left-outline" class="w-6 h-5" />
+  </a>
+  <a
+    href={next || '#'}
+    class:list={[
+      "bg-black p-2 rounded-full",
+      {
+        "bg-black/40 cursor-not-allowed pointer-events-none": !next,
+      },
+    ]}
+  >
+    <Icon name="teenyicons:right-outline" class="w-6 h-5" />
+  </a>
+</header>
