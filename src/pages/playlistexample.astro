@@ -1,12 +1,54 @@
 ---
+import { Image } from "astro:assets";
 import NavigationButtons from "../components/NavigationButtons.astro";
 import Layout from "../layouts/Layout.astro";
-
+import Song from "../components/Song.astro";
+import LikedSong from "../assets/liked-songs-640.png";
 ---
 
 <Layout title="Playlist Example">
-  <section class="rounded overflow-auto max-w-[75%] p-6 bg-[#1F1F1F] w-full">
-    <NavigationButtons back="/" />
-		<h2 class="text-2xl font-bold">Tus me gusta</h2>				    
-	</section>
+  <section
+    class="rounded overflow-auto header-grandient max-w-[75%] w-full"
+  >
+    <header class="flex flex-col p-6 gap-3">
+      <NavigationButtons back="/" />
+      <div class="flex items-center gap-3">
+        <Image
+        width={280}
+        class="rounded opacity-90"
+        src={LikedSong}
+        alt="likedsong"
+      />
+      <div>
+        <small>Playlist</small>
+        <h2 class="text-7xl font-extrabold">Tus me gusta</h2>
+      </div>
+      </div>
+    </header>
+
+    <div class="bg-[#1F1F1F] w-full p-6">
+      <div class="flex w-full border-b-2 py-2 border-gray-400">
+        <p class="flex-1">#</p>
+        <p class="flex-1">Titulo</p>
+        <p class="flex-1">Album</p>
+        <p class="flex-1">Fecha</p>
+        <p class="flex-1">Duracion</p>
+      </div>
+
+      <Song />
+      <Song />
+      <Song />
+      <Song />
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .header-grandient {
+    background: linear-gradient(
+      180deg,
+      rgb(111, 22, 163) 0%,
+      #1F1F1F 50%
+    );
+  }
+</style>

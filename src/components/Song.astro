@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import songImg from "../assets/songImg.jpg";
+---
+
+<div class="flex w-full items-center py-2 self-">
+  <p class="flex-1">1</p>
+  <div class="flex-1 flex items-center gap-2">
+    <Image src={songImg} class="rounded" alt="songimg" width={50} height={50} />
+    <p class="flex flex-col">
+      No gona lie  
+      <span class="opacity-50">Cochise</span>
+    </p>
+  </div>
+  <p class="flex-1 opacity-50">No gona lie</p>
+  <p class="flex-1 opacity-50">Hace 3 semanas</p>
+  <p class="flex-1 opacity-50">3:45</p>
+</div> 
