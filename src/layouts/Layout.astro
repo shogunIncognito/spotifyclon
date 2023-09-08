@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon";
+import PlaylistOption from "../components/PlaylistOption.astro";
 interface Props {
 	title: string;
 }
@@ -17,35 +19,81 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<main class="flex gap-2 p-2 w-full max-h-screen">
+			<section class="w-1/4 max-w-[25%]">
+				<aside class="flex flex-col gap-2">
+					<section class="bg-[#121212] h-full rounded p-4 flex flex-col gap-2">
+						<div class="gap-3 opacity-75 text-md flex items-center">
+							<Icon name="octicon:home-24" width="30" />
+							<h3>Inicio</h3>
+						</div>
+						<div class="gap-3 opacity-75 text-md flex items-center">
+							<Icon name="iconoir:search" width="30" />
+							<h3>Buscar</h3>
+						</div>
+					</section>
+					<section class="p-4 rounded h-full max-h-full bg-[#121212]">
+						<header class="shadow-xl">
+							<div class="flex items-center opacity-75 justify-between">
+								<div class="flex gap-2 items-center">
+									<Icon name="icomoon-free:books" width="30" />
+									<h3>Tu biblioteca</h3>
+								</div>
+								<div class="flex gap-3">
+									<Icon name="ic:baseline-plus" width="30" />
+									<Icon name="ep:right" width="30" />
+								</div>
+							</div>
+							<div class="flex mt-5 text-[0.8rem] gap-2">
+								<h3 class="p-2 bg-[#232323] rounded-full">Playlist</h3>
+								<h3 class="p-2 bg-[#232323] rounded-full">Artistas</h3>
+							</div>
+						</header>
+						<div class="mt-5 flex overflow-auto max-h-full h-full flex-col gap-3">
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+							<PlaylistOption />
+						</div>
+					</section>
+				</aside>
+			</section>
+			<slot />
+		</main>
 	</body>
+	<style is:global>
+		@font-face {
+			font-family: "Monserrat spo";
+			src: url("../fonts/static/Montserrat-medium.ttf"),
+				url("../fonts/static/Montserrat-Regular.ttf"),
+				url("../fonts/static/Montserrat-Medium.ttf");
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			font-family: "Monserrat spo", sans-serif;
+			background-color: black;
+			color: white;
+		}
+	</style>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
