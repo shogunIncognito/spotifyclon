@@ -1,19 +1,40 @@
 ---
 import { Image } from "astro:assets";
 import LikedSong from "../assets/liked-songs-640.png";
+
+interface Props {
+  playlist: {
+    playlist: string;
+    canciones: {
+      id: number;
+      titulo: string;
+      artista: string;
+      album: string;
+      fecha: string;
+      duracion: string;
+    }[];
+  };
+}
+
+const { pathname } = Astro.url;
+const { playlist } = Astro.props;
+
+const playlistUrl = playlist.playlist.split(" ").join("").toLowerCase();
 ---
 
-<a href="/playlistexample">
-  <article class="cursor-pointer transition-colors w-full hover:bg-[#1F1F1F] p-2 flex gap-4">
-    <Image
-    width={48}
-    class="rounded"
-    src={LikedSong}
-    alt="likedsong"
-    />
+<a href={playlistUrl}>
+  <article
+    class:list={[
+      "cursor-pointer transition-colors w-full hover:bg-[#1F1F1F] p-2 flex gap-4",
+      { "bg-[#1f1f1f]": pathname.slice(1) === playlistUrl },
+    ]}
+  >
+    <Image width={48} class="rounded" src={LikedSong} alt="likedsong" />
     <div>
-    <h2 class="text-md">Tus me gusta</h2>
-    <small class="opacity-75">Playlist - 128 canciones</small>
-  </div>
-</article>
+      <h2 class="text-md">{playlist.playlist}</h2>
+      <small class="opacity-75"
+        >Playlist - {playlist.canciones.length} canciones</small
+      >
+    </div>
+  </article>
 </a>

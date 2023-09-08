@@ -4,25 +4,26 @@ import NavigationButtons from "../components/NavigationButtons.astro";
 import Layout from "../layouts/Layout.astro";
 import Song from "../components/Song.astro";
 import LikedSong from "../assets/liked-songs-640.png";
+import playlists from "../assets/playlists.json";
+
+const { pathname } = Astro.url;
 ---
 
 <Layout title="Playlist Example">
-  <section
-    class="rounded overflow-auto header-grandient max-w-[75%] w-full"
-  >
+  <section class="rounded overflow-auto header-grandient max-w-[75%] w-full">
     <header class="flex flex-col p-6 gap-3">
       <NavigationButtons back="/" />
       <div class="flex items-center gap-3">
         <Image
-        width={280}
-        class="rounded opacity-90"
-        src={LikedSong}
-        alt="likedsong"
-      />
-      <div>
-        <small>Playlist</small>
-        <h2 class="text-7xl font-extrabold">Tus me gusta</h2>
-      </div>
+          width={280}
+          class="rounded opacity-90"
+          src={LikedSong}
+          alt="likedsong"
+        />
+        <div>
+          <small>Playlist</small>
+          <h2 class="text-7xl font-extrabold">Tus me gusta</h2>
+        </div>
       </div>
     </header>
 
@@ -35,20 +36,16 @@ import LikedSong from "../assets/liked-songs-640.png";
         <p class="flex-1">Duracion</p>
       </div>
 
-      <Song />
-      <Song />
-      <Song />
-      <Song />
+      {
+        playlists.find((playl) => playl.playlist.split(' ').join('').toLocaleLowerCase() === pathname.slice(1))
+          ?.canciones.map((song) => <Song song={song} />)
+      }
     </div>
   </section>
 </Layout>
 
 <style>
   .header-grandient {
-    background: linear-gradient(
-      180deg,
-      rgb(111, 22, 163) 0%,
-      #1F1F1F 50%
-    );
+    background: linear-gradient(180deg, rgb(111, 22, 163) 0%, #1f1f1f 50%);
   }
 </style>

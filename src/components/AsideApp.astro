@@ -1,6 +1,7 @@
 ---
 import Icon from "astro-icon";
 import PlaylistOption from "./PlaylistOption.astro";
+import playlists from "../assets/playlists.json";
 ---
 
 <aside class="flex w-1/3 h-full max-h-full max-w-[25%] flex-col gap-2">
@@ -40,9 +41,7 @@ import PlaylistOption from "./PlaylistOption.astro";
       </div>
     </header>
     <div class="flex playlist overflow-auto max-h-[86%] h-full flex-col gap-3">
-      <PlaylistOption />
-      <PlaylistOption />
-      <PlaylistOption />
+      {playlists.map((playlist) => <PlaylistOption playlist={playlist} />)}
     </div>
   </section>
 </aside>

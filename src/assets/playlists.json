@@ -1,0 +1,52 @@
+[
+  {
+    "playlist": "Tus me Gusta",
+    "canciones": [
+      {
+        "id": 1,
+        "titulo": "Canción 1",
+        "artista": "artista desconocido",
+        "album": "Álbum 1",
+        "fecha": "Hace una semana",
+        "duracion": "3:45"
+      },
+      {
+        "id": 2,
+        "titulo": "Canción 2",
+        "artista": "artista desconocido",
+        "album": "Álbum 2",
+        "fecha": "2 de marzo del 2022",
+        "duracion": "4:12"
+      },
+      {
+        "id": 3,
+        "titulo": "Canción 3",
+        "artista": "artista desconocido",
+        "album": "Álbum 1",
+        "fecha": "Hace dos semanas",
+        "duracion": "3:20"
+      }
+    ]
+  },
+  {
+    "playlist": "Juegos",
+    "canciones": [
+      {
+        "id": 4,
+        "titulo": "Canción 4",
+        "artista": "artista desconocido",
+        "album": "Banda Sonora de Juego 1",
+        "fecha": "Ayer",
+        "duracion": "2:30"
+      },
+      {
+        "id": 5,
+        "titulo": "Canción 5",
+        "artista": "artista desconocido",
+        "album": "Banda Sonora de Juego 2",
+        "fecha": "3 de abril del 2022",
+        "duracion": "4:05"
+      }
+    ]
+  }
+]
