@@ -11,13 +11,16 @@ interface Props {
     fecha: string;
     duracion: string;
   };
+  index: number;
 }
 
-const { song } = Astro.props;
+const { song, index } = Astro.props;
+
+
 ---
 
 <div class="flex w-full items-center py-2 self-">
-  <p class="flex-1">{song.id}</p>
+  <p class="flex-1">{index + 1}</p>
   <div class="flex-1 flex items-center gap-2">
     <Image src={songImg} class="rounded" alt="songimg" width={50} height={50} />
     <p class="flex flex-col">

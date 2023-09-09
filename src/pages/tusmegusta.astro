@@ -4,13 +4,13 @@ import NavigationButtons from "../components/NavigationButtons.astro";
 import Layout from "../layouts/Layout.astro";
 import Song from "../components/Song.astro";
 import LikedSong from "../assets/liked-songs-640.png";
-import playlists from "../assets/playlists.json";
+import playlists from "../data/playlists.json";
 
-const { pathname } = Astro.url;
+const playlist = playlists.find((playl) => playl.playlist === "Tus me gusta")          
 ---
 
 <Layout title="Playlist Example">
-  <section class="rounded overflow-auto header-grandient max-w-[75%] w-full">
+  <section class="rounded pt-20 relative p-6 overflow-auto header-grandient max-w-[75%] w-full">
     <header class="flex flex-col p-6 gap-3">
       <NavigationButtons back="/" />
       <div class="flex items-center gap-3">
@@ -37,8 +37,7 @@ const { pathname } = Astro.url;
       </div>
 
       {
-        playlists.find((playl) => playl.playlist.split(' ').join('').toLocaleLowerCase() === pathname.slice(1))
-          ?.canciones.map((song) => <Song song={song} />)
+        playlist?.canciones.map((song, index) => <Song index={index} song={song} />)
       }
     </div>
   </section>

@@ -3,13 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import PlaylistCard from "../components/PlaylistCard.astro";
 import PlaylistContainer from "../components/PlaylistContainer.astro";
 import NavigationButtons from "../components/NavigationButtons.astro";
-import playlists from "../assets/playlists.json";
+import playlists from "../data/playlists.json";
 ---
 
 <Layout title="Spotify Clon">
-	<section class="rounded overflow-auto max-w-[75%] p-6 bg-[#1F1F1F] w-full">
-		<NavigationButtons back={false} next={false} />
-
+	<section class="rounded pt-20 relative overflow-auto max-w-[75%] p-6 bg-[#1F1F1F] w-full">
+		<NavigationButtons back={false} next={false} />		
 		<section>
 			<h2 class="text-2xl font-bold">Escuchado recientemente</h2>
 			<PlaylistContainer>
